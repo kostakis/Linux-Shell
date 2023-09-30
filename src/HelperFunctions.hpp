@@ -3,8 +3,6 @@
 #include <vector>
 #include <string>
 
-void showPromt();
-
 bool handleCd(const std::vector<char*>& tokens);
 
 void makeTokens(std::vector<char*>& lineTokens, std::string& line);

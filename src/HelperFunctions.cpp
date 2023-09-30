@@ -8,8 +8,6 @@
 
 #include <glob.h> // For wildcards
 #include <signal.h>
-#include <unistd.h>
-#include <limits.h> // PATH_MAX
 #include <string.h>
 
 #include <iostream>
@@ -46,18 +44,6 @@ void makeTokens(std::vector<char*>& lineTokens, std::string& line) {
 		token = strtok(nullptr, " ");
 	}
 	lineTokens.push_back(nullptr); // Mark the end of the line
-}
-
-void showPromt() {
-	char currentPath[PATH_MAX];
-	if (getcwd(currentPath, PATH_MAX) != NULL) {
-		std::cout << "in-mysh-now@" << currentPath << " >> ";
-	}
-	else {
-		// std::cout << "getcwd error exiting shell\n";
-		// std::cout << "Error string: " << strerror(errno) << std::endl;
-		exit(EXIT_FAILURE);
-	}
 }
 
 bool handleCd(const std::vector<char*>& tokens) {

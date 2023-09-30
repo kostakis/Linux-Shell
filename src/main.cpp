@@ -1,6 +1,7 @@
 #include "HelperFunctions.hpp"
 #include "Redirection.hpp"
 #include "Alias.hpp"
+#include "Prompt.hpp"
 #include "History.hpp"
 
 #include <iostream>
@@ -13,17 +14,16 @@ int main(int argc, char** argv) {
 	// Clear the currrent terminal
 	system("clear");
 
-	auto history = std::make_shared<History>();
+	auto history = std::make_unique<History>();
 	auto alias = std::make_shared<Alias>();
+	auto prompt = std::make_unique<Prompt>();
 
 	history->setAllias(alias);
 
 	while (true) {
-		showPromt();
+		prompt->show();
 
-		std::string line;
-		std::getline(std::cin, line);
-
+		std::string line = prompt->readLine();
 		history->addToHistory(line);
 
 		// Simple useful stuff
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 		if (line == "clear") system("clear");
 		if (line == "history") {
 			history->printHistory();
-			continue;
+			continue; // back to the loop
 		}
 
 		auto linesSeperatedBySemiColon = splitLine(line, ';');
