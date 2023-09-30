@@ -1,16 +1,13 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <vector>
 
-bool handleCd(const std::vector<char*>& tokens);
+void makeTokens(std::vector<char *> &lineTokens, std::string &line);
+void printTokens(const std::vector<char *> &lineTokens);
 
-void makeTokens(std::vector<char*>& lineTokens, std::string& line);
-void printTokens(const std::vector<char*>& lineTokens);
+void parseEnviromentalVariables(std::string &line);
 
-std::vector<std::string> splitLine(const std::string& line, char delim);
-void parseEnviromentalVariables(std::string& line);
+std::vector<std::string> expandWildcards(const std::string &token);
 
-std::vector<std::string> expandWildcards(const std::string& token);
-
-void execute(std::vector<char*>& tokens);
+void execute(std::vector<char *> &tokens);

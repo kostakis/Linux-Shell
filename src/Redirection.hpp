@@ -2,5 +2,6 @@
 
 #include <vector>
 
-void handleOutputRedirection(std::vector<char*>& lineTokens);
-void handleInputRedirection(std::vector<char*>& lineTokens);
+// Too simple to be class
+void handleOutputRedirection(std::vector<char *> &lineTokens);
+void handleInputRedirection(std::vector<char *> &lineTokens);
