@@ -183,8 +183,6 @@ std::vector<std::string> expandWildcards(const std::string &token) {
   return result;
 }
 
-std::vector<std::string> splitLine(const std::string &line, char delim) {}
-
 void parseEnviromentalVariables(std::string &line) {
   // Find and replace ${} variables
   size_t pos = line.find("${");
